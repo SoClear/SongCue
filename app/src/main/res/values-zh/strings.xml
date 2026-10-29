@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">报幕</string>
+    <string name="app_description">切歌时语音播报歌名和歌手。</string>
+    <string name="artist_announcement">歌手播报</string>
+    <string name="artist_none">不播放歌手</string>
+    <string name="artist_before_title">在歌名前播放歌手</string>
+    <string name="artist_after_title">在歌名后播放歌手</string>
+</resources>

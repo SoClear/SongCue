@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SongCue</string>
+    <string name="app_description">Announce song titles and artists when tracks change.</string>
+    <string name="artist_announcement">Artist announcement</string>
+    <string name="artist_none">Do not announce artist</string>
+    <string name="artist_before_title">Announce artist before song title</string>
+    <string name="artist_after_title">Announce artist after song title</string>
+</resources>

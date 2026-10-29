@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- The note is a transparent cutout, so themed icons keep the same silhouette. -->
+    <path
+        android:fillColor="#FFF9F0"
+        android:fillType="evenOdd"
+        android:pathData="M40,32 L58,32 C64.627,32 70,37.373 70,44 L70,57 C70,63.627 64.627,69 58,69 L49,69 L37,77 C35.9,77.73 34.5,76.94 34.5,75.62 L34.5,67.5 C30.59,65.52 28,61.52 28,57 L28,44 C28,37.373 33.373,32 40,32 Z M50,43 C50,41.895 50.895,41 52,41 L60,41 L60,46 L55,46 L55,57.5 C55,61.09 51.642,64 47.5,64 C43.358,64 40,61.538 40,58.5 C40,55.462 43.358,53 47.5,53 C48.377,53 49.218,53.11 50,53.312 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M75,44 C79,47.5 79,53.5 75,57 M81,39 C88,45.3 88,55.7 81,62"
+        android:strokeColor="#FFF9F0"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+</vector>
