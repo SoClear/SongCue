@@ -165,10 +165,9 @@ private class SessionPlayer(
         scheduleUpdate()
     }
 
-    // 合并同一轮歌曲信息和状态更新，避免拿上一首的元数据播报。
+    // 合并同一轮歌曲信息和状态更新，但不能被持续的进度更新无限推迟。
     private fun scheduleUpdate() {
-        main.removeCallbacks(update)
-        main.postDelayed(update, 80)
+        if (!main.hasCallbacks(update)) main.postDelayed(update, 80)
     }
 
     override fun onMetadataChanged(metadata: MediaMetadata?) = scheduleUpdate()
@@ -182,11 +181,17 @@ private class SessionPlayer(
         if (metadata.getLong("android.media.metadata.ADVERTISEMENT") != 0L ||
             id?.startsWith("spotify:ad:") == true
         ) return null
-        val title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE)
+        // 魅族版 QQ 音乐的 TITLE/ARTIST 会被通知栏歌词改写，收藏更新时甚至不提供。
+        val meizu = controller.packageName == "com.meizu.media.music"
+        val title = metadata.getString(
+            if (meizu) "android.media.metadata.CUSTOM_FIELD_TITLE" else MediaMetadata.METADATA_KEY_TITLE,
+        )
             ?.takeIf { it.isNotBlank() }
             ?: metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE)
                 ?.takeIf { it.isNotBlank() } ?: return null
-        val singer = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST)
+        val singer = metadata.getString(
+            if (meizu) MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE else MediaMetadata.METADATA_KEY_ARTIST,
+        )
             ?.takeIf { it.isNotBlank() }
             ?: metadata.getString(MediaMetadata.METADATA_KEY_ALBUM_ARTIST)
         return SessionSong(id, title, singer).normalized(controller.packageName)
